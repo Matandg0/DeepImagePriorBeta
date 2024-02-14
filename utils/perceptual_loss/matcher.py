@@ -78,4 +78,7 @@ all_losses = {
     'mse': nn.MSELoss(),
     'smoothL1': nn.SmoothL1Loss(),
     'L1': nn.L1Loss(),
+    'Gaussian': nn.GaussianNLLLoss(),
+    'Poisson': nn.PoissonNLLLoss(),
+    
 }
