@@ -54,3 +54,28 @@ def get_noisy_image_uniform(img_np, intensity):
     img_noisy_pil = np_to_pil(img_noisy_np)
 
     return img_noisy_pil, img_noisy_np
+
+def get_noisy_image_poisson(image,sigma):
+    """
+    Add Poisson noise to an image pixel-wise based on pixel intensities.
+
+    Parameters:
+        image: numpy.ndarray
+            Input image.
+
+    Returns:
+        numpy.ndarray
+            Noisy image.
+    """
+    noisy_image = np.zeros_like(image, dtype=np.float32)
+    for i in range(image.shape[0]):
+        for j in range(image.shape[1]):
+            for k in range(image.shape[2]):
+                # Generate Poisson noise based on pixel intensity
+                noisy_pixel = np.random.poisson(image[i, j, k])
+                # Ensure noisy pixel value is within valid range [0, 255]
+                noisy_image[i, j, k] = np.clip(image[i, j, k] + noisy_pixel, 0,1)
+
+    img_noisy_pil = np_to_pil(noisy_image)
+
+    return img_noisy_pil, noisy_image
