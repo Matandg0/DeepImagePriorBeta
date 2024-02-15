@@ -39,3 +39,18 @@ def get_noisy_image_Gaussian(img_np, sigma):
     img_noisy_pil = np_to_pil(img_noisy_np)
 
     return img_noisy_pil, img_noisy_np
+
+def get_noisy_image_uniform(img_np, intensity):
+    """Adds uniform noise to an image.
+    
+    Args: 
+        img_np: image, np.array with values from 0 to 1
+        intensity: std of the noise
+    """
+        # Convert the image to numpy array
+    image_np = np.array(image, dtype=np.float32)
+    rows, cols, channels = image.shape
+    img_noisy_np = np.clip(img_np + np.random.uniform(0.1,0.9, size=img_np.shape), 0, 1).astype(np.float32)
+    img_noisy_pil = np_to_pil(img_noisy_np)
+
+    return img_noisy_pil, img_noisy_np
