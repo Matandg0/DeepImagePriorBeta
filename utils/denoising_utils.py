@@ -50,7 +50,7 @@ def get_noisy_image_uniform(img_np, intensity):
         # Convert the image to numpy array
     image_np = np.array(img_np, dtype=np.float32)
     rows, cols, channels = image_np.shape
-    img_noisy_np = np.clip(img_np + np.random.uniform(0.3,0.6, size=img_np.shape), 0, 1).astype(np.float32)
+    img_noisy_np = np.clip(img_np + np.random.uniform(0.1,0.4, size=img_np.shape), 0, 1).astype(np.float32)
     img_noisy_pil = np_to_pil(img_noisy_np)
 
     return img_noisy_pil, img_noisy_np
