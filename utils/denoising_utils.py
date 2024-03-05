@@ -72,7 +72,7 @@ def get_noisy_image_poisson(image,sigma):
         for j in range(image.shape[1]):
             for k in range(image.shape[2]):
                 # Generate Poisson noise based on pixel intensity
-                noisy_pixel = np.random.poisson(image[i, j, k])/10
+                noisy_pixel = np.random.poisson(image[i, j, k])/5
                 # Ensure noisy pixel value is within valid range [0, 255]
                 noisy_image[i, j, k] = np.clip(image[i, j, k] + noisy_pixel, 0,1)
 
